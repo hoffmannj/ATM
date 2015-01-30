@@ -2,7 +2,7 @@
 Another Type Mapper (DI, IoC  name it as you want)
 
 ###Example 1
-Using it is really ease. Exmple:
+The simplest way:
 ```C#
 var m = ATMMain.Create();
 m.Register(mapper =>
