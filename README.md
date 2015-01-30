@@ -48,3 +48,17 @@ var o1 = m.Get<TestInterface1>();
 var o2 = m.Get<TestInterface1>();
 ```
 Obviously, o1 and o2 will contain the same object.
+
+###Example 5
+You can have multiple mappings for one single interface like this:
+```C#
+var m = ATMMain.Create();
+m.Register(mapper =>
+{
+    mapper.Map<TestInterface1>().To<TestInterface1Impl1>();
+    mapper.Map<TestInterface1>().To<TestInterface1Impl2>();
+});
+var o = m.GetAll(typeof(TestInterface1));
+```
+After that variable 'o' will contain an array of two TestInterface1 implementations. (TestInterface1Impl1 and TestInterface1Impl2 instances)
+######Note: Using 'm.Get<T>' in this case throws an Exception as it doesn't know which mapping to use.
